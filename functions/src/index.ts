@@ -6,11 +6,11 @@ import TwitterClient from './twitter';
 const SOURCE = "https://github.com/andoshin11/social-profile/raw/master/profile.json";
 
 enum Service {
-	TWITTER = "twitter",
+  TWITTER = "twitter",
 }
 
 interface Profile {
-	[Service.TWITTER]: string;
+  [Service.TWITTER]: string;
 }
 
 /**
@@ -19,9 +19,9 @@ interface Profile {
  * @return {Profile} Profile master data
 **/
 const getProfile = async (): Promise<Profile> => {
-	const res = await fetch(SOURCE);
-	const json = await res.json();
-	return json;
+  const res = await fetch(SOURCE);
+  const json = await res.json();
+  return json;
 }
 
 /**
@@ -32,10 +32,10 @@ const getProfile = async (): Promise<Profile> => {
 const getAccessToken = (req) => {
   const header = req.get('Authorization')
   if (header) {
-      const match = header.match(/^Bearer\s+([^\s]+)$/);
-      if (match) {
-          return match[1];
-      }
+    const match = header.match(/^Bearer\s+([^\s]+)$/);
+    if (match) {
+      return match[1];
+    }
   }
   return null;
 }
